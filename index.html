@@ -3,23 +3,57 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Apocalypse DayZ Server</title>
+  <title>ALIVE DayZ Server</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Small circular music player */
+    #music-player {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 5px;
+    }
+    #music-player button {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 16px;
+    }
+    /* Click overlay for autoplay */
+    #music-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      z-index: 50;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+  </style>
 </head>
 
 <body class="bg-black text-white font-sans relative">
 
   <!-- Background Music -->
-  <audio id="bg-music" autoplay loop>
-    <source src="music/sincedayone.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio>
+  <audio id="bg-music"></audio>
 
-  <!-- Music Player Controls -->
-  <div class="fixed bottom-4 right-4 bg-gray-900/80 backdrop-blur p-3 rounded-2xl flex items-center space-x-3 z-20">
-    <button id="play-pause" class="bg-green-500 px-3 py-1 rounded hover:bg-green-600">Pause</button>
-    <button id="next-track" class="bg-blue-500 px-3 py-1 rounded hover:bg-blue-600">Next</button>
-    <span id="track-name" class="text-gray-200">Track 1</span>
+  <!-- Music Player Controls (small circular) -->
+  <div id="music-player" class="fixed bottom-4 right-4 bg-gray-900/80 backdrop-blur z-20 shadow-lg">
+    <button id="play-pause" class="bg-green-500 hover:bg-green-600">▶</button>
+    <button id="next-track" class="bg-blue-500 hover:bg-blue-600 mt-1">⏭</button>
+  </div>
+
+  <!-- Autoplay Overlay -->
+  <div id="music-overlay">
+    <span class="text-white text-xl font-bold">Click anywhere to start music 🎵</span>
   </div>
 
   <!-- Background Image -->
@@ -44,36 +78,32 @@
       </div>
     </nav>
 
-    <!-- Home -->
+    <!-- Home Section -->
     <section id="home" class="p-10 text-center">
       <h2 class="text-4xl font-bold mb-4">Welcome Survivor</h2>
       <p class="text-gray-300 mb-4">Join our hardcore DayZ experience with custom mods, AI, and realistic survival mechanics.</p>
-
       <div class="bg-gray-800/80 backdrop-blur p-5 rounded-2xl inline-block mt-4">
         <p><strong>Server IP:</strong> 45.124.213.21:2302</p>
         <p><strong>DISCORD:</strong> 
           <a href="https://discord.gg/jpuYbujdUC" target="_blank" class="text-green-400 hover:underline">
-            discord.gg/jpuYbujdUC
+            CLICK ME
           </a>
         </p>
       </div>
     </section>
 
-    <!-- Guides -->
+    <!-- Guides Section -->
     <section id="guides" class="p-10 bg-gray-800/80 backdrop-blur">
       <h2 class="text-3xl font-bold mb-6 text-center">Guides</h2>
-
       <div class="grid md:grid-cols-3 gap-6">
         <div class="bg-gray-700/80 p-5 rounded-2xl">
           <h3 class="text-xl font-bold mb-2">Starter Guide</h3>
           <p class="text-gray-300">Spawn, find food, avoid zombies, and gear up fast.</p>
         </div>
-
         <div class="bg-gray-700/80 p-5 rounded-2xl">
           <h3 class="text-xl font-bold mb-2">Base Building</h3>
           <p class="text-gray-300">Build strong bases, hide loot, and defend from raids.</p>
         </div>
-
         <div class="bg-gray-700/80 p-5 rounded-2xl">
           <h3 class="text-xl font-bold mb-2">AI & Loot</h3>
           <p class="text-gray-300">Fight AI, clear zones, and get high-tier rewards.</p>
@@ -81,79 +111,43 @@
       </div>
     </section>
 
-    <!-- Donator List Vertical Clean -->
+    <!-- Donators Section -->
     <section id="donators" class="p-10">
       <h2 class="text-3xl font-bold mb-6 text-center">💰 Donator List</h2>
-
       <div class="bg-gray-800/80 backdrop-blur p-6 rounded-2xl max-w-xl mx-auto text-center space-y-6">
-
         <!-- Top Supporters -->
         <div>
           <p class="text-yellow-400 font-bold mb-4 text-lg">🌟 Top Supporters</p>
-
           <div class="space-y-4">
             <div class="flex flex-col items-center">
               <img src="images/gamerbo53.png" class="w-16 h-16 rounded-full border-2 border-yellow-400 mb-2">
               <span>Gamerbo53</span>
             </div>
-
             <div class="flex flex-col items-center">
               <img src="images/freak.png" class="w-16 h-16 rounded-full border-2 border-yellow-400 mb-2">
               <span>Freak</span>
             </div>
-
             <div class="flex flex-col items-center">
               <img src="images/enye.png" class="w-16 h-16 rounded-full border-2 border-yellow-400 mb-2">
               <span>Enye</span>
             </div>
-
-            <div class="flex flex-col items-center">
-              <img src="images/alcapa.png" class="w-16 h-16 rounded-full border-2 border-yellow-400 mb-2">
-              <span>Unstable Alcapa</span>
-            </div>
-
-            <div class="flex flex-col items-center">
-              <img src="images/loz.png" class="w-16 h-16 rounded-full border-2 border-yellow-400 mb-2">
-              <span>Lozilaz</span>
-            </div>
-
-            <div class="flex flex-col items-center">
-              <img src="images/murder.png" class="w-16 h-16 rounded-full border-2 border-yellow-400 mb-2">
-              <span>Murdermock</span>
-            </div>
-
           </div>
         </div>
-
         <hr class="border-gray-600">
-
         <!-- Recent Donators -->
         <div>
           <p class="text-green-400 font-bold mb-4 text-lg">💚 Recent Donators</p>
-
           <div class="space-y-4">
             <div class="flex flex-col items-center">
               <img src="images/mike.png" class="w-16 h-16 rounded-full border-2 border-green-400 mb-2">
               <span>CorpMike</span>
             </div>
-
             <div class="flex flex-col items-center">
               <img src="images/jaka.png" class="w-16 h-16 rounded-full border-2 border-green-400 mb-2">
               <span>Jakashi</span>
             </div>
-
-            <div class="flex flex-col items-center">
-              <img src="images/luxe.png" class="w-16 h-16 rounded-full border-2 border-green-400 mb-2">
-              <span>Luxe</span>
-            </div>
-
-            <div class="flex flex-col items-center">
-              <img src="images/lord.png" class="w-16 h-16 rounded-full border-2 border-green-400 mb-2">
-              <span>LordGrims</span>
-            </div>
           </div>
         </div>
-
       </div>
     </section>
 
@@ -161,13 +155,11 @@
     <section class="p-10 bg-gray-800/80 backdrop-blur text-center">
       <h2 class="text-3xl font-bold mb-4">Support the Server</h2>
       <p class="text-gray-300 mb-6">Donate to keep the server running and get exclusive perks.</p>
-
       <div class="space-y-3">
         <p>✔ Priority Queue</p>
         <p>✔ Starter Kits</p>
         <p>✔ Special Roles</p>
       </div>
-
       <div class="mt-6">
         <a href="paypal.me/lykaganda13" target="_blank">
           <button class="bg-green-500 px-6 py-3 rounded-2xl hover:bg-green-600">Donate Now</button>
@@ -179,7 +171,6 @@
     <footer class="bg-black/80 text-center p-4 text-gray-500">
       © 2025 ALIVE PVE DayZ Server
     </footer>
-
   </div>
 
   <!-- Music Player Script -->
@@ -187,7 +178,7 @@
     const music = document.getElementById("bg-music");
     const playPauseBtn = document.getElementById("play-pause");
     const nextBtn = document.getElementById("next-track");
-    const trackName = document.getElementById("track-name");
+    const overlay = document.getElementById("music-overlay");
 
     const playlist = [
       {src: "music/sincedayone.mp3", name: "Since Day One"},
@@ -196,30 +187,51 @@
     ];
 
     let currentTrack = 0;
+    let musicStarted = false;
 
-    function loadTrack(index) {
+    function loadTrack(index){
       music.src = playlist[index].src;
-      trackName.textContent = playlist[index].name;
-      music.play();
+      if(musicStarted) {
+        music.play().catch(()=>console.log("Autoplay blocked"));
+        playPauseBtn.textContent = "⏸";
+      }
     }
 
-    playPauseBtn.addEventListener("click", () => {
-      if(music.paused){
+    // Start music after first click
+    function startMusic() {
+      if(!musicStarted){
+        musicStarted = true;
+        overlay.style.display = "none"; // hide overlay
+        loadTrack(currentTrack);
+        window.removeEventListener("click", startMusic);
+        window.removeEventListener("keydown", startMusic);
+      }
+    }
+
+    window.addEventListener("click", startMusic);
+    window.addEventListener("keydown", startMusic);
+
+    // Play/Pause Button
+    playPauseBtn.addEventListener("click", ()=>{
+      if(!musicStarted){
+        startMusic();
+      } else if(music.paused){
         music.play();
-        playPauseBtn.textContent = "Pause";
+        playPauseBtn.textContent = "⏸";
       } else {
         music.pause();
-        playPauseBtn.textContent = "Play";
+        playPauseBtn.textContent = "▶";
       }
     });
 
-    nextBtn.addEventListener("click", () => {
+    // Next Button
+    nextBtn.addEventListener("click", ()=>{
       currentTrack = (currentTrack + 1) % playlist.length;
       loadTrack(currentTrack);
     });
 
-    music.addEventListener("ended", () => {
-      // auto next track
+    // Auto next track
+    music.addEventListener("ended", ()=>{
       currentTrack = (currentTrack + 1) % playlist.length;
       loadTrack(currentTrack);
     });
